@@ -1,5 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+import dayjs from 'dayjs';
 
 function App() {
   return (
@@ -23,3 +25,15 @@ function App() {
 }
 
 export default App;
+
+function App1() {
+    const currentDate = dayjs().format('YYYY MM DD HH:mm:ss');
+    return (
+        <div>
+            <h1>Текущая дата и время:</h1>
+            <p>{currentDate}</p>
+        </div>
+    );
+}
+
+export {App1};
