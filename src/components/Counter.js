@@ -1,9 +1,23 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Counter.css";
 
 const Counter = () => {
 
-    const [count, setCount] = useState(0);
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    const handleKeyPress = (event) => {
+      if (event.key === "ArrowUp") setCount((prev) => prev + 1);
+      if (event.key === "ArrowDown") setCount((prev) => prev - 1);
+    };
+
+    window.addEventListener("keydown", handleKeyPress);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyPress);
+    };
+
+  }, []);
 
   return (
     <div className="counter">
